@@ -1,0 +1,12 @@
+version: '3'
+services:
+  checker:
+    build: ../checker/.
+    environment:
+      ENV_1: 'test'
+    restart: on-failure
+  processor:
+    build: ../processor/.
+    environment:
+      ENV_1: 'test'
+    restart: on-failure
