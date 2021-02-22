@@ -1,12 +1,19 @@
 version: '3'
 services:
   checker:
+    container_name: checker
     build: ../checker/.
+    image: checker:latest
     environment:
-      ENV_1: 'test'
+      INTERVAL_MS: 1000
+      LOG_LEVEL: DEBUG
+      TARGET_URL: https://en.wikipedia.org/wiki/Main_Page
+      REGEX: .*Welcome to Wikipedia.*free encyclopedia.*
     restart: on-failure
   processor:
+    container_name: processor
     build: ../processor/.
+    image: processor:latest
     environment:
-      ENV_1: 'test'
+      LOG_LEVEL: DEBUG
     restart: on-failure
